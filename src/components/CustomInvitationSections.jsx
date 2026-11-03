@@ -60,7 +60,7 @@ export default function CustomInvitationSections() {
           <p className="custom-invitation-text">
             <span>With hearts full of joy and the grace of the Almighty,</span>
             <span>our families invite you to witness</span>
-            <span className="custom-couple-line">Kalaivarasan and Vennila tie the knot —</span>
+            <span className="custom-couple-line">Kalaiyarasan and Vennila tie the knot —</span>
             <span>and begin their forever.</span>
           </p>
           <div className="custom-tamil-copy">
@@ -118,7 +118,7 @@ export default function CustomInvitationSections() {
               </div>
             )).reduce((acc, item, index) => index ? [...acc, <span className="custom-time-divider" aria-hidden="true" key={`divider-${index}`} />, item] : [item], [])}
           </div>
-          <p className="custom-countdown-note">{time.complete ? 'Today is the beautiful day!' : 'Until Kalaivarasan & Vennila’s beautiful day'}</p>
+          <p className="custom-countdown-note">{time.complete ? 'Today is the beautiful day!' : 'Until Kalaiyarasan & Vennila’s beautiful day'}</p>
         </div>
       </section>
     </div>

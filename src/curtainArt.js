@@ -95,23 +95,35 @@ export const valanceSVG = () => {
 ${beads}</svg>`
 }
 
-// hanging tassel (cord runs up past the top of the screen)
+// Hanging tassel.
+// The rope starts far ABOVE the top of the screen and ends at the knob — nothing hangs below the tassel.
+// The viewBox starts 150 units ABOVE the tassel (-150), so the tassel hangs 150px lower than the box top —
+// that is the long visible rope at the top. `overflow: visible` lets the rope keep going up off-screen.
+// Change SHOW_ROPE for more/less visible rope above the knob, ROPE_UP for the hidden length.
 export const tasselSVG = () => {
+  const SHOW_ROPE = 150 // visible rope above the tassel when it is at rest (px)
+  const ROPE_UP = 1400 // total rope length above the tassel, hidden off-screen (px)
+
   let threads = ''
   for (let i = 0; i < 17; i++) {
     const f = i / 16
-    const x1 = 32 + f * 26, x2 = 15 + f * 60
+    const x1 = 32 + f * 26
+    const x2 = 15 + f * 60
     threads += `<line x1="${x1.toFixed(1)}" y1="256" x2="${x2.toFixed(1)}" y2="446" stroke="${i % 2 ? '#e8808c' : '#4f0814'}" stroke-width="1" opacity=".55"/>`
   }
+
   let fray = ''
   for (let i = 0; i < 22; i++) {
     const x = 15 + i * 2.9
     fray += `<line x1="${x.toFixed(1)}" y1="440" x2="${(x + (i % 3) - 1).toFixed(1)}" y2="${452 + (i % 4) * 2}" stroke="${i % 2 ? '#b02a3c' : '#7d1223'}" stroke-width="1.6"/>`
   }
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 560" width="90" height="560"><defs>${GOLD}
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 ${-SHOW_ROPE} 90 ${560 + SHOW_ROPE}" width="90" height="${560 + SHOW_ROPE}" style="overflow:visible">
+<defs>${GOLD}
 <pattern id="tc" width="4" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-58)"><rect width="4" height="7" fill="#d4a54a"/><rect width="4" height="3" fill="#8e6016"/></pattern>
 <linearGradient id="red" x1="0" x2="1"><stop offset="0" stop-color="#5a0a16"/><stop offset=".45" stop-color="#b8283a"/><stop offset="1" stop-color="#4f0814"/></linearGradient></defs>
-<rect x="43" y="0" width="4" height="210" fill="url(#tc)"/>
+<!-- rope: from far above the screen down to the knob, and no further -->
+<rect x="43" y="${-ROPE_UP}" width="4" height="${ROPE_UP + 224}" fill="url(#tc)"/>
 <ellipse cx="45" cy="224" rx="15" ry="19" fill="url(#g)" stroke="${EDGE}" stroke-width=".8"/>
 <path d="M31 214 Q45 221 59 214 M30 224 Q45 231 60 224 M32 234 Q45 240 58 234" fill="none" stroke="${EDGE}" stroke-width=".8"/>
 <rect x="36" y="241" width="18" height="12" rx="3" fill="url(#g)" stroke="${EDGE}" stroke-width=".7"/>
@@ -119,5 +131,6 @@ export const tasselSVG = () => {
 <path d="M30 256 C20 300 12 350 14 442 L76 442 C78 350 70 300 60 256 Z" fill="url(#red)"/>${threads}
 <path d="M22 300 Q45 312 68 300" fill="none" stroke="url(#g)" stroke-width="5"/>
 <path d="M17 350 Q45 364 73 350" fill="none" stroke="url(#g)" stroke-width="5"/>
-<path d="M14 425 Q45 439 76 425" fill="none" stroke="url(#g)" stroke-width="5"/>${fray}</svg>`
+<path d="M14 425 Q45 439 76 425" fill="none" stroke="url(#g)" stroke-width="5"/>${fray}
+</svg>`
 }

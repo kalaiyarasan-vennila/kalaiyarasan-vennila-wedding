@@ -50,7 +50,7 @@ export default function Curtain({ onStart, onDone }) {
     gsap.from('.c-hint', { opacity: 0, y: 20, duration: 1, delay: 1.1 })
     gsap.fromTo(
       tassel.current,
-      { rotation: -1.6, transformOrigin: '45px 200px' },
+      { rotation: -1.6, transformOrigin: '45px 280px' },
       { rotation: 1.6, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut' },
     )
 
@@ -105,8 +105,7 @@ export default function Curtain({ onStart, onDone }) {
       <div className="c-text c-fade">
         <span className="c-om">ௐ</span>
         <span className="c-eyebrow">THE WEDDING OF</span>
-        <h1 className="c-names">
-          {config.groom} <i>&amp;</i> {config.bride}
+        <h1 className="c-names">{config.groom} <br /> <i>&amp;</i> <br /> {config.bride}
         </h1>
         <span className="c-sub">You are lovingly invited.</span>
       </div>
