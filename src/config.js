@@ -9,7 +9,7 @@ export const config = {
   footerPlace: '12 November 2026 · Bargur, Krishnagiri',
 
   // Optional couple photo for the hero arch, e.g. '/photos/couple.jpg' (put file in /public/photos)
-  heroImage: '/public/assets/couple.png',
+  heroImage: '/assets/couple.png',
 
   intro:
     'With hearts full of joy and the grace of the almighty, our families invite you to witness Kalaiyarasan and Vennila tie the knot — and begin their forever.',
